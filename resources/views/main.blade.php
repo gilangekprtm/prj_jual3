@@ -57,7 +57,7 @@
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" data-bs-toggle="dropdown"
                             href="#">
                             <img alt="Profile" class="rounded-circle" src="{{ asset('assets/img/profile-img.jpg') }}">
-                            <span class="">xxx</span>
+                            <span class="text-capitalize">{{ auth()->user()->name }}</span>
                         </a>
                     </li><!-- End Profile Nav -->
                 </ul>
@@ -101,7 +101,6 @@
 
                     </ul>
                 </li><!-- End Components Nav -->
-
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
                         <i class="bi bi-journal-text"></i><span>Transaksi</span><i
@@ -162,7 +161,7 @@
                     </ul>
                 </li><!-- End Tables Nav -->
 
-
+                
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse"
                         href="#">
@@ -175,13 +174,23 @@
                                 <i class="bi bi-circle"></i><span>Ubah Password</span>
                             </a>
                         </li>
+                        @if (Auth::user()->level_akses == 3
+                        )
                         <li>
-                            <a href="./index.php?aksi=Manajemen&xaksi=Manajemen Akun&yaksi=1">
+                            <a href="{{ url('pengguna') }}">
                                 <i class="bi bi-circle"></i><span>Manajemen Akun</span>
                             </a>
                         </li>
+                        @endif
                     </ul>
                 </li><!-- End Charts Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="{{ route('logout') }}">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
         </aside><!-- End Sidebar-->
 
 
